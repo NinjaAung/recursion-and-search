@@ -61,10 +61,8 @@ def binary_search_recursive(array, item, lower=None, upper=None):
         return None
 
     if array[guess] < item:
-        print(lower,upper)
         return binary_search_recursive(array, item, guess+1, upper)
     elif array[guess] > item:
-        print(lower,upper)
         return binary_search_recursive(array, item, lower, guess-1)
     
     return guess
