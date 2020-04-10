@@ -35,15 +35,25 @@ def binary_search(array, item):
     # return binary_search_recursive(array, item)
 
 
-def binary_search_iterative(array, item):
-    # TODO: implement binary search iteratively here
-    pass
-    # once implemented, change binary_search to call binary_search_iterative
-    # to verify that your iterative implementation passes all tests
-
+def binary_search_iterative(array, item): # names = ['Alex', 'Brian', 'Julia', 'Kojin', 'Nabil', 'Nick', 'Winnie']
+    min = 0
+    max = len(array)
+    guess = (min+max)//2
+    while array[guess] != item:
+        guess = (min+max)//2
+        print(min,max,guess)
+        if guess > len(array)-1 or ( guess == max and min != max ):
+            return None
+        if array[guess] < item:
+            min = guess + 1
+            continue
+        elif array[guess] > item:
+            max = guess - 1
+            continue
+    return guess
+        
 
 def binary_search_recursive(array, item, left=None, right=None):
     # TODO: implement binary search recursively here
     pass
-    # once implemented, change binary_search to call binary_search_recursive
-    # to verify that your recursive implementation passes all tests
+
