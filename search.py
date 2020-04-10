@@ -31,29 +31,40 @@ def binary_search(array, item):
     """return the index of item in sorted array or None if item is not found"""
     # implement binary_search_iterative and binary_search_recursive below, then
     # change this to call your implementation to verify it passes all tests
-    return binary_search_iterative(array, item)
-    # return binary_search_recursive(array, item)
+    #return binary_search_iterative(array, item)
+    return binary_search_recursive(array, item)
 
 
 def binary_search_iterative(array, item): # names = ['Alex', 'Brian', 'Julia', 'Kojin', 'Nabil', 'Nick', 'Winnie']
-    min = 0
-    max = len(array)
-    guess = (min+max)//2
+    lower = 0
+    upper = len(array)
+    guess = (lower+upper)//2
     while array[guess] != item:
-        guess = (min+max)//2
-        print(min,max,guess)
-        if min > max or guess > len(array)-1:
+        guess = (lower+upper)//2
+        if lower > upper or guess > len(array)-1:
             return None
         if array[guess] < item:
-            min = guess + 1
+            lower = guess + 1
             continue
         elif array[guess] > item:
-            max = guess - 1
+            upper = guess - 1
             continue
     return guess
         
 
-def binary_search_recursive(array, item, left=None, right=None):
-    # TODO: implement binary search recursively here
-    pass
+def binary_search_recursive(array, item, lower=None, upper=None):
+    if lower == None and upper == None:
+        return binary_search_recursive(array, item, 0, len(array))
 
+    guess = (lower+upper)//2
+    if lower > upper or guess > len(array)-1:
+        return None
+
+    if array[guess] < item:
+        print(lower,upper)
+        return binary_search_recursive(array, item, guess+1, upper)
+    elif array[guess] > item:
+        print(lower,upper)
+        return binary_search_recursive(array, item, lower, guess-1)
+    
+    return guess
