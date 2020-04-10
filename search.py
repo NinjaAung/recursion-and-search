@@ -42,7 +42,7 @@ def binary_search_iterative(array, item): # names = ['Alex', 'Brian', 'Julia', '
     while array[guess] != item:
         guess = (min+max)//2
         print(min,max,guess)
-        if guess > len(array)-1 or ( guess == max and min != max ):
+        if min > max or guess > len(array)-1:
             return None
         if array[guess] < item:
             min = guess + 1
